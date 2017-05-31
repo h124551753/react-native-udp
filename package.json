@@ -1,7 +1,7 @@
 {
   "name": "react-native-udpsocket",
   "version": "2.2.1",
-  "description": "node's dgram API for react-native, support react-native < 0.40.0",
+  "description": "node's dgram API for react-native, support react-native < 0.40.0", -invalid text
   "main": "UdpSockets.js",
   "scripts": {
     "start": "exit 1"

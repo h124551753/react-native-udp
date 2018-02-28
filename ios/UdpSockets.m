@@ -6,11 +6,11 @@
 //  Copyright (c) 2015 Tradle, Inc. All rights reserved.
 //
 
-#import "RCTAssert.h"
-#import "RCTBridge.h"
-#import "RCTConvert.h"
-#import "RCTEventDispatcher.h"
-#import "RCTLog.h"
+#import <React/RCTAssert.h>
+#import <React/RCTBridge.h>
+#import <React/RCTConvert.h>
+#import <React/RCTEventDispatcher.h>
+#import <React/RCTLog.h>
 #import "UdpSockets.h"
 #import "UdpSocketClient.h"
 
@@ -53,13 +53,14 @@ RCT_EXPORT_METHOD(createSocket:(nonnull NSNumber*)cId withOptions:(NSDictionary*
 RCT_EXPORT_METHOD(bind:(nonnull NSNumber*)cId
                   port:(int)port
                   address:(NSString *)address
+                  options:(NSDictionary *)options
                   callback:(RCTResponseSenderBlock)callback)
 {
     UdpSocketClient* client = [self findClient:cId callback:callback];
     if (!client) return;
 
     NSError *error = nil;
-    if (![client bind:port address:address error:&error])
+    if (![client bind:port address:address options:options error:&error])
     {
         NSString *msg = error.localizedFailureReason ?: error.localizedDescription;
         callback(@[msg ?: @"unknown error when binding"]);
